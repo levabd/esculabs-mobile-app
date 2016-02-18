@@ -1,0 +1,79 @@
+[
+  {
+    "username": "john",
+    "password": "123",
+    "first_name": "John",
+    "last_name": "Doe",
+    "post": "post1",
+    "hospital": {
+      "id": "",
+      "title": ""
+    },
+    "hospitals_to_check": [
+      {
+        "id": "0",
+        "title": "Hospital 1",
+        "check": true
+      },
+      {
+        "id": "1",
+        "title": "Hospital 2",
+        "check": true
+      }
+    ],
+    "preAvatar": null,
+    "avatar": null
+  }
+,
+  {
+    "username": "john2",
+    "password": "123",
+    "first_name": "John",
+    "last_name": "Doe",
+    "post": "post2",
+    "hospital": {
+      "id": "",
+      "title": "Hospital 2"
+    },
+    "hospitals_to_check": [
+      {
+        "id": "0",
+        "title": "Hospital 1",
+        "check": false
+      },
+      {
+        "id": "1",
+        "title": "Hospital 2",
+        "check": true
+      }
+    ],
+    "preAvatar": null,
+    "avatar": null
+  }
+,
+  {
+    "username": "nagib228",
+    "password": "qwe",
+    "first_name": "Ivan",
+    "last_name": "Ivanov",
+    "post": "post3",
+    "hospital": {
+      "id": "",
+      "title": "Hospital 1"
+    },
+    "hospitals_to_check": [
+      {
+        "id": "0",
+        "title": "Hospital 1",
+        "check": true
+      },
+      {
+        "id": "1",
+        "title": "Hospital 2",
+        "check": false
+      }
+    ],
+    "preAvatar": null,
+    "avatar": null
+  }
+]

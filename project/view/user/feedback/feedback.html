@@ -1,0 +1,30 @@
+<ons-page ng-controller="dropdownController">
+
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <ons-toolbar-button ng-click="navigate.popPage(); $root.helpers.clearDetail();"><i class="fa-angle-left" style="font-size: 42px"></i></ons-toolbar-button>
+        </div>
+        <div class="center">
+            Feedback
+        </div>
+    </ons-toolbar>
+
+    <content-panel>
+
+        <!--<ons-button style="margin-top: 10pt" ng-click="popover.show($event);" class="button&#45;&#45;large">Popover</ons-button>-->
+        <div class="edit-text">
+            <label>Category</label>
+            <select style="font-size: 14px; background: none; border: none; border-bottom: 1px solid black; width: 100%; padding-top: 10pt">
+                <option selected disabled>Select category</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+            </select>
+        </div>
+        <div class="edit-text">
+            <label>Text</label>
+            <textarea class="data-text" auto-scroll-anchor></textarea>
+        </div>
+        <ons-button class="button--large">Send</ons-button>
+    </content-panel>
+
+</ons-page>

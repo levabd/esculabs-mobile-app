@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="mobile-web-app-cabaple" content="yes">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+    <title>My App</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="vendor.css"/>
+    <link rel="stylesheet" href="app.css"/>
+
+    <!-- Application -->
+    <script src="vendor.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Cordova -->
+    <script src="cordova.js"></script>
+    <script type="text/javascript">
+
+        /*document.addEventListener('deviceready', function onDeviceReady() {
+
+            angular.bootstrap(document, ['app']);
+
+        }, false);*/
+
+        //для тестирования в браузере, не через cordova run
+        if (!window.cordova){
+            window.cordova = {
+                device: {
+                    uuid: 'blablabla'
+                }
+            }
+        }
+
+        angular.element(document).ready(function() {
+            angular.bootstrap(document, ['app']);
+        });
+        //localStorage.clear();
+    </script>
+</head>
+<body>
+
+<!-- @include component/sliding-menu/_sliding-menu.html -->
+
+<!-- @include ../_include.html -->
+</body>
+</html>

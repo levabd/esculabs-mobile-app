@@ -1,0 +1,22 @@
+<ons-page id="'imgCropController" class="imgCrop-page" ng-controller="imgCropController as vm">
+
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <ons-toolbar-button ng-click="navigate.popPage();"><i class="fa-angle-left" style="font-size: 42px"></i></ons-toolbar-button>
+        </div>
+        <div class="right">
+            <ons-toolbar-button ng-click="$root.item.avatar = avatar; navigate.popPage();">Ready</ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <div class="bg-element">
+        <!--<div class="progress-element small" ng-hide="vm.loaded">
+            <img class="circle" src="public/img/loader_circle.png" alt=""/>
+            <img class="logo" src="public/img/loader_logo.png" alt=""/>
+        </div>-->
+
+
+    <img-crop image="$root.item.preAvatar" area-type="square" result-image="avatar"
+              on-load-begin="vm.loaded = false;" on-load-done="vm.loaded = true;"></img-crop>
+    </div>
+</ons-page>

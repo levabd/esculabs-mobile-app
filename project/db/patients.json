@@ -1,0 +1,41 @@
+[
+  {
+    "first_name": "John",
+    "last_name": "Doe",
+    "hospital": {
+      "id": "0",
+      "title": "Hospital 1",
+      "check": false
+    },
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius et velit eu pharetra. Cras laoreet risus leo, id ullamcorper ex dignissim id. Integer facilisis, mauris vel lacinia tincidunt, felis urna volutpat diam, id tempus diam leo in ex. ",
+    "detail": false,
+    "checked": false,
+    "user_check": false
+  },
+  {
+    "first_name": "Jack",
+    "last_name": "Doe",
+    "hospital": {
+      "id": "1",
+      "title": "Hospital 2",
+      "check": false
+    },
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius et velit eu pharetra. Cras laoreet risus leo, id ullamcorper ex dignissim id. Integer facilisis, mauris vel lacinia tincidunt, felis urna volutpat diam, id tempus diam leo in ex. ",
+    "detail": false,
+    "checked": true,
+    "user_check": false
+  },
+  {
+    "first_name": "Colin",
+    "last_name": "McRae",
+    "hospital": {
+      "id": "1",
+      "title": "Hospital 1",
+      "check": false
+    },
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius et velit eu pharetra. Cras laoreet risus leo, id ullamcorper ex dignissim id. Integer facilisis, mauris vel lacinia tincidunt, felis urna volutpat diam, id tempus diam leo in ex. ",
+    "detail": false,
+    "checked": true,
+    "user_check": false
+  }
+]

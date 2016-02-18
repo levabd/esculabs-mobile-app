@@ -1,0 +1,44 @@
+$break-small: 480px
+$break-large: 600px
+
+
+
+/* mixin respond-to ($media)
+ * Миксин для удобной работы с медиа queries и разными устройствами
+ *
+ * $media - алиас для работы
+ */
+
+=respond-to($media)
+  @if $media == sm
+    @media only screen and (max-width: $break-small)
+      @content
+  @else if $media == md
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1)
+      @content
+  @else if $media == lg
+    @media only screen and (min-width: $break-large)
+      @content
+
+
+
+
+
+/* mixin fontFace ($name, $path, [$weight, $style]) - параметры в квадратных скобках необязательны
+ * Миксин для быстрого создания font-face
+ *
+ * $name: имя шрифта fontFamily
+ * $path: путь до шрифта, без расширения, например: 'path/to/my-font/myfont',
+ * $weight: толщина шрифта в css 'font-weight', по-умолчанию normal или 400
+ * $style: стиль шрифта (italic, normal), по-умолчанию normal
+ */
+
+=fontFace($family, $src, $weight: normal, $style: normal)
+  @font-face
+    font-family: $family
+    src: url("#{$src}.eot")
+    // IE9 compat
+    src: url("#{$src}.eot?#iefix") format("embedded-opentype"), url("#{$src}.woff") format("woff"), url("#{$src}.ttf") format("truetype"), url("#{$src}.svg##{$family}") format("svg")
+    // legacy iOS
+    font-style: $style
+    font-weight: $weight

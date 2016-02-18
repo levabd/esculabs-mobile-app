@@ -1,0 +1,80 @@
+<ons-navigator animation="slide" var="navigate" ons-postpop="$root.helpers.postPopNavigator();">
+<ons-page ng-controller="homeController as vm">
+
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <ons-toolbar-button ng-click="menu.toggleMenu()"><i class="fa-bars" style="font-size: 24px"></i></ons-toolbar-button>
+        </div>
+        <!--<div class="center">Home</div>-->
+        <div class="right" style="padding-right: 6pt; padding-top: 12px; width: 30%">
+            <!--<ons-toolbar-button></ons-toolbar-button>-->
+            <i class="fa fa-search" style="position: absolute; top: 12px; right: 10px; float: left; z-index: 20;"></i>
+            <input ng-model="vm.searchText" type="text" class="fkingInput">
+        </div>
+    </ons-toolbar>
+
+    <ons-pull-hook var="loader" ng-action="load($done)">
+        <span ng-switch="loader.getCurrentState()">
+            <span ng-switch-when="initial"><ons-icon size="35px" icon="fa fa-arrow-down"></ons-icon>  Pull down to refresh</span>
+            <span ng-switch-when="preaction"><ons-icon size="35px" icon="fa fa-arrow-up"></ons-icon>  Release to refresh</span>
+            <span ng-switch-when="action"><ons-icon size="35px" spin="true" icon="fa fa-cog"></ons-icon> Loading data. Please wait...</span>
+        </span>
+    </ons-pull-hook>
+
+    <content-panel class="home-panel">
+
+        <div class="patient-container" ng-repeat="patient in $root.patients | onlyBooleanValueFilter:true | fullNameFilter: vm.searchText" ng-hide="patient.user_check">
+            <p>
+                <label>First name: {{patient.first_name}}</label>
+            </p>
+            <p>
+                <label>Last name: {{patient.last_name}}</label>
+            </p>
+            <p>
+                <label>Hospital: {{patient.hospital.title}}</label>
+            </p>
+            <p>
+                <label>Hospital check: </label><i class="fa-check" style="color: #006600" ng-show="patient.checked"></i><i class="fa-times" style="color: firebrick" ng-hide="patient.checked"></i>
+            </p>
+            <div class="desctiption" ng-show="patient.detail">
+                <p style="text-align: justify;">Description: {{patient.description}}</p>
+            </div>
+            <div>
+                <div class="more">
+                    <ons-button ng-click="patient.detail = true;" ng-hide="patient.detail">More</ons-button>
+                    <ons-button ng-click="patient.detail = false;" ng-show="patient.detail"><i class="fa fa-arrow-up"></i></ons-button>
+                </div><div class="acc">
+                <ons-button ng-click="patient.user_check = true">Accept</ons-button>
+            </div>
+            </div>
+        </div>
+
+        <!--<div class="patient-container" ng-repeat="patient in vm.patients | onlyBooleanValueFilter:true" ng-hide="patient.user_check">
+            <p>
+                <label>First name: {{patient.first_name}}</label>
+            </p>
+            <p>
+                <label>Last name: {{patient.last_name}}</label>
+            </p>
+            <p>
+                <label>Hospital: {{patient.hospital.title}}</label>
+            </p>
+            <p>
+                <i class="fa-check" style="color: #006600" ng-show="patient.checked"></i><i class="fa-times" style="color: firebrick" ng-hide="patient.checked"></i>
+            </p>
+            <div class="desctiption" ng-hide="patient.detail">
+                <p style="text-align: justify;">Description: {{patient.description}}</p>
+            </div>
+            <div>
+                <div class="more">
+                    <ons-button ng-click="patient.detail = false;">More</ons-button>
+                </div><div class="acc">
+                <ons-button ng-click="patient.user_check = true">Accept</ons-button>
+                </div>
+            </div>
+        </div>-->
+
+    </content-panel>
+
+</ons-page>
+</ons-navigator>

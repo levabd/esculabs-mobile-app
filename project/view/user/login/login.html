@@ -1,0 +1,16 @@
+<ons-page ng-controller="loginController as vm">
+
+    <div class="login-form">
+        <label class="login-title">Esculabs</label>
+        <input type="text"
+               class="text-input--underbar"
+               placeholder="Name"
+               ng-model="vm.username">
+        <input type="password"
+               class="text-input--underbar"
+               placeholder="Password"
+               ng-model="vm.password">
+        <ons-button modifier="large" class="login-button" ng-click="vm.login()">Log in</ons-button>
+    </div>
+
+</ons-page>

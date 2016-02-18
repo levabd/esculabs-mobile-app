@@ -1,0 +1,33 @@
+<ons-page id="optionsController" ng-controller="optionsController as vm">
+
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <ons-toolbar-button ng-click="navigate.popPage(); $root.helpers.clearDetail();"><i class="fa-angle-left" style="font-size: 42px"></i></ons-toolbar-button>
+        </div>
+        <div class="center">
+            Options
+        </div>
+        <div class="right">
+            <ons-toolbar-button ng-click="vm.saveHospitalsData();">Save</ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <ons-list>
+        <ons-list-header>Select to check</ons-list-header>
+        <ons-list-item modifier="tappable" ng-repeat="hospital in $root.item.hospitals_to_check">
+            <label class="checkbox checkbox--noborder checkbox--list-item">
+                <input type="checkbox" ng-model="hospital.check">
+                <div class="checkbox__checkmark checkbox--list-item__checkmark"></div>
+                {{hospital.title}}
+            </label>
+        </ons-list-item>
+        <!--<ons-list-item modifier="tappable" ng-repeat="hospital in vm.item.hospitals_to_check">
+            <label class="checkbox checkbox&#45;&#45;noborder checkbox&#45;&#45;list-item">
+                <input type="checkbox" ng-model="hospital.check">
+                <div class="checkbox__checkmark checkbox&#45;&#45;list-item__checkmark"></div>
+                {{hospital.title}}
+            </label>
+        </ons-list-item>-->
+    </ons-list>
+
+</ons-page>

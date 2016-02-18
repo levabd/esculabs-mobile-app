@@ -1,0 +1,41 @@
+<ons-page modifier="menu-page" class="menu-module" ng-controller="menuController as menuController">
+
+    <ons-toolbar modifier="transparent">
+        <div class="right">
+            <ons-toolbar-button class="menu-closeMenu" ng-click="menu.closeMenu()">
+                Close
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+
+    <ons-list class="menu-list">
+        <ons-list-item class="menu-item" ng-click="menu.closeMenu()">
+            Главная
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" ng-click="menuController.navigate('view/user/profile/profile.html');">
+            Профиль
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" ng-click="">
+            Статистика
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" ng-click="menuController.navigate('view/user/options/options.html');">
+            Настройки
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" ng-click="menuController.navigate('view/user/feedback/feedback.html');">
+            Обратная связь
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" ng-click="menuController.navigate('view/about/about.html');">
+            О приложении
+        </ons-list-item>
+
+        <ons-list-item class="menu-item" ng-click="menuController.navigate('view/user/login/login.html');$root.item = null;">
+            Выход
+        </ons-list-item>
+    </ons-list>
+
+</ons-page>
