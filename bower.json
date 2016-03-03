@@ -2,11 +2,12 @@
   "name": "mobile-app",
   "version": "1.0.0",
   "description": "",
-  "dependencies":{
+  "dependencies": {
     "onsenui": "latest",
     "angular": "~1.4.7",
     "angular-sanitize": "latest",
     "angular-touch": "latest",
-    "angular-mobile-core": "latest"
+    "angular-mobile-core": "latest",
+    "highcharts": "~4.2.3"
   }
 }
