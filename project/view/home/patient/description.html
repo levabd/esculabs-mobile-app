@@ -1,0 +1,13 @@
+<ons-page ng-controller="detailController">
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <ons-toolbar-button ng-click="navigate.popPage(); $root.helpers.clearDetail();"><i class="fa-angle-left" style="font-size: 42px"></i></ons-toolbar-button>
+        </div>
+        <div class="center">
+            Комментарий
+        </div>
+    </ons-toolbar>
+    <content-panel class="detail-panel">
+        <p style="text-align: justify;">{{$root.patient.description}}</p>
+    </content-panel>
+</ons-page>

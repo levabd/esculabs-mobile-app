@@ -1,0 +1,24 @@
+<ons-page ng-controller="measureController as vm">
+
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <ons-toolbar-button ng-click="navigate.popPage();"><i class="fa-angle-left" style="font-size: 42px"></i></ons-toolbar-button>
+        </div>
+        <div class="center">
+            Снимки
+        </div>
+    </ons-toolbar>
+
+    <content-panel class="home-panel">
+        <div class="image-container">
+            <div class="time">Исходное изображение</div>
+            <div><img ng-src="{{$root.measeure_source}}"></div>
+            <!--<div><img ng-src="{{proceed}}"></div>-->
+        </div>
+        <div class="image-container">
+            <div class="time">Изображение обработанное в Esculabs</div>
+            <div><img ng-src="{{$root.measeure_proceed}}"></div>
+        </div>
+    </content-panel>
+
+</ons-page>

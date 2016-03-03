@@ -1,0 +1,73 @@
+//PATH TO INIT SASS FILE
+@import '../../../include'
+
+.progress-bar
+  background-color: rgba(0,0,0,0.8)
+
+.progress-element
+  position: relative
+  width: 60pt
+  margin: 0 auto
+  &.big
+    margin-top: $margin * 2
+    margin-bottom: $margin * 2
+    width: 60pt
+  &.small
+    margin-top: $margin * 2
+    margin-bottom: $margin * 2
+    width: 48pt
+
+  .circle
+    position: absolute
+    width: 1920px
+    max-width: 100%
+    transform: translateZ(0)
+    animation-name: rotation
+    animation-duration: 2s
+    animation-iteration-count: infinite
+    animation-timing-function: cubic-bezier(0.79, 0.22, 0.21, 0.75)
+
+
+  .logo
+    position: relative
+    width: 1920px
+    max-width: 100%
+    opacity: 0.99
+    animation-name: flash
+    animation-duration: 800ms
+    animation-iteration-count: infinite
+    animation-timing-function: cubic-bezier(0.79, 0.22, 0.21, 0.75)
+
+.flash-text
+  opacity: 0.99
+  animation-name: flashText
+  animation-duration: 800ms
+  animation-iteration-count: infinite
+  animation-timing-function: linear
+
+@keyframes rotation
+  0%
+    transform: rotate(0deg)
+
+  100%
+    transform: rotate(360deg)
+
+@keyframes flash
+  0%
+    opacity: 0.99
+
+  50%
+    opacity: 0.1
+
+  100%
+    opacity: 0.99
+
+@keyframes flashText
+  0%
+    opacity: 0.99
+
+  50%
+    opacity: 0.5
+
+  100%
+    opacity: 0.99

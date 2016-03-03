@@ -1,0 +1,36 @@
+{
+  "first_name": "Василий",
+  "last_name": "Чапаев",
+  "patronymic": "Иванович",
+  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi varius et velit eu pharetra. Cras laoreet risus leo, id ullamcorper ex dignissim id. Integer facilisis, mauris vel lacinia tincidunt, felis urna volutpat diam, id tempus diam leo in ex. ",
+  "date": "\/Date(1456114753489)\/",
+  "examines":
+    {
+      "checked": true,
+      "user_check": false,
+      "number": 5,
+      "tp": 12,
+      "scd": 7.2,
+      "sensor": "XL",
+      "iqr": 5.8,
+      "med": 11.1,
+      "iqr_med": "52%",
+      "all_scans": 17,
+      "correct_scans": 8,
+      "measurements" :
+      [
+        {
+          "status": true,
+          "time":  "\/Date(1456114753489)\/",
+          "source": "public/img/source.jpg",
+          "proceed" : "public/img/proceed.jpg"
+        },
+        {
+          "status": false,
+          "time":  "\/Date(1456114753489)\/",
+          "source": "public/img/source2.jpg",
+          "proceed" : "public/img/proceed2.jpg"
+        }
+      ]
+    }
+}

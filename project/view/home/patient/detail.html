@@ -1,0 +1,54 @@
+<ons-page ng-controller="detailController as vm">
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="navigate.popPage(); $root.helpers.clearDetail();"><i class="fa-angle-left" style="font-size: 42px"></i></ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <content-panel class="detail-panel">
+        <table width="100%" cellpadding="5px" cellspacing="0">
+            <tr>
+                <td><b>ФИО:</b></td>
+                <td>{{$root.patient.last_name}} {{$root.patient.first_name}} {{$root.patient.patronymic}}</td>
+            </tr>
+            <tr>
+                <td><b>Дата</b></td>
+                <td>{{vm.fullDate}}</td>
+            </tr>
+            <tr>
+                <td><b>Проверка больницы:</b></td>
+                <td><i class="fa-check" style="color: #006600"></i></td>
+            </tr>
+            <tr>
+                <td><b>Номер межреберья</b>:</td>
+                <td>{{$root.patient.examines.number}}</td>
+            </tr>
+            <tr>
+                <td><b>TP:</b></td>
+                <td>{{$root.patient.examines.tp}}</td>
+            </tr>
+            <tr>
+                <td><b>SCD:</b></td>
+                <td>{{$root.patient.examines.scd}}</td>
+            </tr>
+            <tr>
+                <td><b>Датчик:</b></td>
+                <td>{{$root.patient.examines.sensor}}</td>
+            </tr>
+            <tr>
+                <td><b>IQR:</b></td>
+                <td>{{$root.patient.examines.iqr}}</td>
+            </tr>
+            <tr>
+                <td><b>MED:</b></td>
+                <td>{{$root.patient.examines.med}}</td>
+            </tr>
+            <tr>
+                <td class="bottom"><b>IQR/MED:</b></td>
+                <td class="bottom">{{$root.patient.examines.iqr_med}}</td>
+            </tr>
+        </table>
+
+        <ons-button class="detail-button" ng-click="navigate.pushPage('view/home/patient/description.html')">Комментарий</ons-button>
+        <ons-button class="detail-button" ng-click="navigate.pushPage('view/home/patient/measure/measure.html')">Просмотр снимков</ons-button>
+    </content-panel>
+</ons-page>

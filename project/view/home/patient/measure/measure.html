@@ -1,0 +1,20 @@
+<ons-page ng-controller="measureController as vm">
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <ons-toolbar-button ng-click="navigate.popPage();"><i class="fa-angle-left" style="font-size: 42px"></i></ons-toolbar-button>
+        </div>
+        <div class="center">
+            Снимки
+        </div>
+    </ons-toolbar>
+    <content-panel class="home-panel">
+        <div class="image-container" ng-repeat="measure in $root.patient.examines.measurements" ng-click="vm.show_detail(measure.proceed);">
+            <div class="time">Время начала сканирования: {{vm.hours}}</div>
+            <div><img ng-src="{{measure.proceed}}"></div>
+            <div class="status">
+                <div ng-show="measure.status" style="background-color: #009926"><label><i class="fa fa-check-circle-o"></i> Корректно</label></div>
+                <div ng-hide="measure.status" style="background-color: #990000"><label><i class="fa fa-times-circle-o"></i> Некорректно</label></div>
+            </div>
+        </div>
+    </content-panel>
+</ons-page>

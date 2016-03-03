@@ -1,0 +1,66 @@
+<ons-page ng-controller="statisticsController as vm">
+
+    <ons-toolbar fixed-style>
+        <div class="left">
+            <ons-toolbar-button ng-click="navigate.popPage();"><i class="fa-angle-left" style="font-size: 42px"></i></ons-toolbar-button>
+        </div>
+        <div class="center">
+            Статистика
+        </div>
+    </ons-toolbar>
+
+    <div class="navigation-bar">
+        <div class="navigation-bar__center">
+            <!-- segment control -->
+            <div class="button-bar" style="width:90%; margin:8px auto 0;">
+                <div class="button-bar__item">
+                    <input type="radio" ng-value="1" ng-model="vm.tab" name="navi-segment-a">
+                    <div class="button-bar__button">За год</div>
+                </div>
+                <div class="button-bar__item">
+                    <input type="radio" ng-value="2" ng-model="vm.tab" ng-click="vm.select_tab();" name="navi-segment-a">
+                    <div class="button-bar__button">за месяц</div>
+                </div>
+                <div class="button-bar__item">
+                    <input type="radio" ng-value="3" ng-model="vm.tab" ng-click="vm.select_tab();" name="navi-segment-a">
+                    <div class="button-bar__button">за неделю</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <content-panel ng-show="vm.tab === 1">
+        <div style="text-align: center;">
+            <div id="container" style="height: 200px; width: 200px; margin: 0 auto"></div>
+        </div>
+        <p style="text-align: center; margin-top: 0">Проверено: {{vm.year_incorrect + vm.year_correct}}</p>
+        <p style="text-align: center;">Из них</p>
+        <div style="width: 10px; height: 10px; background-color: #0099ff; display: inline-block; margin-right: 4px; border-radius: 5px;"></div><p style="display: inline-block; margin-top: 10px; margin-bottom: 10px;">Корректно: {{vm.year_correct}}</p>
+        <br>
+        <div style="width: 10px; height: 10px; background-color: #F7464A; display: inline-block; margin-right: 4px; border-radius: 5px;"></div><p style="display: inline-block; margin-top: 10px; margin-bottom: 10px;">Некорректно: {{vm.year_incorrect}}</p>
+    </content-panel>
+
+    <content-panel ng-show="vm.tab === 2">
+        <div style="text-align: center">
+            <div id="container2" style="height: 200px; width: 200px; margin: 0 auto"></div>
+        </div>
+        <p style="text-align: center; margin-top: 0">Проверено: {{vm.month_incorrect + vm.month_correct}}</p>
+        <p style="text-align: center;">Из них</p>
+        <div style="width: 10px; height: 10px; background-color: #0099ff; display: inline-block; margin-right: 4px; border-radius: 5px;"></div><p style="display: inline-block; margin-top: 10px; margin-bottom: 10px;">Корректно: {{vm.month_correct}}</p>
+        <br>
+        <div style="width: 10px; height: 10px; background-color: #F7464A; display: inline-block; margin-right: 4px; border-radius: 5px;"></div><p style="display: inline-block; margin-top: 10px; margin-bottom: 10px;">Некорректно: {{vm.month_incorrect}}</p>
+    </content-panel>
+
+    <content-panel ng-show="vm.tab === 3">
+        <div style="text-align: center;">
+            <div id="container3" style="height: 200px; width: 200px; margin: 0 auto" ng-show="vm.week_correct !=0 || vm.week_incorrect !=0"></div>
+            <div ng-hide="vm.week_correct !=0 || vm.week_incorrect !=0" style="padding: 20px;">PIE IS A LIE</div>
+        </div>
+        <p style="text-align: center; margin-top: 0">Проверено: {{vm.week_incorrect + vm.week_correct}}</p>
+        <p style="text-align: center;">Из них</p>
+        <div style="width: 10px; height: 10px; background-color: #0099ff; display: inline-block; margin-right: 4px; border-radius: 5px;"></div><p style="display: inline-block; margin-top: 10px; margin-bottom: 10px;">Корректно: {{vm.week_correct}}</p>
+        <br>
+        <div style="width: 10px; height: 10px; background-color: #F7464A; display: inline-block; margin-right: 4px; border-radius: 5px;"></div><p style="display: inline-block; margin-top: 10px; margin-bottom: 10px;">Некорректно: {{vm.week_incorrect}}</p>
+    </content-panel>
+
+</ons-page>
