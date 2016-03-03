@@ -16,6 +16,15 @@
                     }
                 }
             },
+            returnToMainPage: function (_navigator) {
+                if (_navigator) {
+                    var count = _navigator.getPages().length;
+                    for (var i = 1; i < count; i++) {
+                        _navigator.popPage({animation: 'slide'});
+                    }
+                    menu.close();
+                }
+            },
             clearDetail: function() {
                 for(var i = 0; i < $rootScope.patients.length; i++) {
                     $rootScope.patients[i].detail = false;
@@ -29,16 +38,6 @@
             postPopNavigator: function() {
                 $console.backInstance();
             }
-            /*homePageService: function() {
-                    var user = _.chain($rootScope.usersData)
-                        .find(function (userData) {
-                            return userData.username == $rootScope.globals.currentUser.username;
-                        })
-                        .value();
-                    vm.item = angular.copy(user);
-                    console.info('HOME JS');
-                    console.info(vm.item);
-        }*/
         };
         $rootScope.helpers = helpers;
     }

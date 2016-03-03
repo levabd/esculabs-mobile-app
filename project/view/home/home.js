@@ -19,13 +19,11 @@
             return function(input, param) {
                 var output = [];
                 if (param != "" && param != undefined){
-                    console.info(param.indexOf(' '));
                     if (param.indexOf(' ') > 0) {
                         angular.forEach(input, function(v) {
                             var fullName = v.first_name + ' ' + v.last_name;
                             if (fullName == param || v.hospital.title == param) {
                                 output.push(v);
-                                console.info(fullName);
                             }
                         });
                     }
@@ -37,15 +35,15 @@
                             }
                         });
                     }
-
                 }
                 else {
                     output = input;
                 }
                 return output;
             }
-
         }]);
+
+    //////////////////////////////////////////////////////
 
     homeController.$inject = ['$scope', '$rootScope', 'localStorageService', '$http', '$timeout'];
 
@@ -55,61 +53,16 @@
 
         var vm = this;
 
-        vm.item = {
-            first_name: '',
-            last_name: '',
-            post: '',
-            hospital: {
-                id: '',
-                title: ''
-            },
-            hospitals_to_check: [
-                {
-                    id: '',
-                    title: '',
-                    check: false
-                },
-                {
-                    id: '',
-                    title: '',
-                    check: false
-                }
-            ],
-            preAvatar: null,
-            avatar: null
-        };
-
-
-
-        /*if($rootScope.patients) {
+        vm.accept = function (id) {
+            $rootScope.item.all_checks++;
+            $rootScope.item.correct++;
             for (var i = 0; i < $rootScope.patients.length; i++) {
-                if ($rootScope.patients[i].hospital.title == $rootScope.item.hospitals_to_check[i].title) {
-                    $rootScope.patients[i].hospital.check = $rootScope.item.hospitals_to_check[i].check;
+                if ($rootScope.patients[i].id == id) {
+                    $rootScope.patients[i].checked_at = new Date;
+                    alert($rootScope.patients[i].checked_at);
                 }
             }
-        }*/
-
-
-       /* $http.get('db/users.json').success(function(data) {
-            $rootScope.usersData = data;
-            localStorageService.set('users', data);
-
-            var user = _.chain($rootScope.usersData)
-                .find(function(userData){ return userData.username == $rootScope.globals.currentUser.username; })
-                .value();
-            vm.item = angular.copy(user);
-
-        });
-
-        $http.get('db/patients.json').success(function(data) {
-            $rootScope.patientsData = data;
-            vm.patients = angular.copy($rootScope.patientsData);
-            for (var i = 0; i < vm.patients.length; i++) {
-                if (vm.patients[i].hospital.title == vm.item.hospitals_to_check[i].title) {
-                    vm.patients[i].hospital.check = vm.item.hospitals_to_check[i].check;
-                }
-            }
-        });*/
+        };
 
         //pull to refresh код
         $scope.load = function($done) {
@@ -117,10 +70,6 @@
             $timeout(function() {
                 if($rootScope.patients){
                     console.info('RELOAD!!!!!!!!!!!!!!!!!!!!!!!1');
-                    /*var user = _.chain($rootScope.usersData)
-                        .find(function(userData){ return userData.username == $rootScope.globals.currentUser.username; })
-                        .value();
-                    vm.item = angular.copy(user);*/
                     for (var i = 0; i < $rootScope.patients.length; i++) {
                         for (var j = 0; j < $rootScope.item.hospitals_to_check.length; j++) {
                             if ($rootScope.patients[i].hospital.title == $rootScope.item.hospitals_to_check[j].title) {
@@ -128,37 +77,17 @@
                             }
                         }
                     }
-                    $rootScope.helpers.clearDetail();
                     $done();
                 }
             }, 1000);
 
         }
 
-        if(!$rootScope.usersData && !$rootScope.patientsData && !$rootScope.globals){
-            $http.get('db/users.json').success(function(data) {
-                $rootScope.usersData = data;
-                localStorageService.set('users', data);
-                console.info('First http.get')
-            });
-
-            $http.get('db/patients.json').success(function(data) {
-                $rootScope.patientsData = data;
-                $rootScope.patients = angular.copy($rootScope.patientsData);
-            });
-        }
-
-        /*vm.list = $rootScope.patientsData(function(response) {
-            angular.forEach(response, function(value, key) {
-                var fullName = value.first_name + ' ' + value.last_name;
-                vm.list[key].fullName = fullName;
-            });
-        });*/
-
-
         //Проверка на авторизацию пользователя
         $rootScope.globals = localStorageService.get('globals') || {};
+
         if ($rootScope.globals.currentUser) {
+
             //$http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata;
             $http.get('db/users.json').success(function(data) {
                 $rootScope.usersData = data;
@@ -166,25 +95,34 @@
                     .find(function(userData){ return userData.username == $rootScope.globals.currentUser.username; })
                     .value();
                 $rootScope.item = angular.copy(user);
-                localStorageService.set('users', data);
+                $http.get('db/patients.json').success(function(data) {
+                    $rootScope.patientsData = data;
+                    $rootScope.patients = angular.copy($rootScope.patientsData);
+                    for (var i = 0; i < $rootScope.patients.length; i++) {
+                        for (var j = 0; j < $rootScope.item.hospitals_to_check.length; j++) {
+                            if ($rootScope.patients[i].hospital.title == $rootScope.item.hospitals_to_check[j].title) {
+                                $rootScope.patients[i].hospital.check = $rootScope.item.hospitals_to_check[j].check;
+                            }
+                        }
+                    }
+                });
                 console.info('Second http.get')
             });
 
-            $http.get('db/patients.json').success(function(data) {
-                $rootScope.patientsData = data;
-                $rootScope.patients = angular.copy($rootScope.patientsData);
-                for (var i = 0; i < $rootScope.patients.length; i++) {
-                    for (var j = 0; j < $rootScope.item.hospitals_to_check.length; j++) {
-                        if ($rootScope.patients[i].hospital.title == $rootScope.item.hospitals_to_check[j].title) {
-                            $rootScope.patients[i].hospital.check = $rootScope.item.hospitals_to_check[j].check;
-                        }
-                    }
-                }
-            });
         }
         else {
             navigate.pushPage('view/user/login/login.html',{animation:'none'});
             $rootScope.item = null;
+
+            $http.get('db/users.json').success(function(data) {
+                $rootScope.usersData = data;
+                localStorageService.set('users', data);
+                console.info('First http.get');
+                $http.get('db/patients.json').success(function(data) {
+                    $rootScope.patientsData = data;
+                    $rootScope.patients = angular.copy($rootScope.patientsData);
+                });
+            });
         }
 
     }

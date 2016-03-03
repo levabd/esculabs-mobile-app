@@ -9,7 +9,7 @@
     </ons-toolbar>
 
     <ons-list class="menu-list">
-        <ons-list-item class="menu-item" ng-click="menu.closeMenu()">
+        <ons-list-item class="menu-item" ng-click="$root.helpers.returnToMainPage(navigate);">
             Главная
         </ons-list-item>
 
@@ -17,7 +17,7 @@
             Профиль
         </ons-list-item>
 
-        <ons-list-item class="menu-item" ng-click="">
+        <ons-list-item class="menu-item" ng-click="menuController.navigate('view/user/statistics/statistics.html');">
             Статистика
         </ons-list-item>
 

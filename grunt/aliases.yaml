@@ -2,3 +2,9 @@ default:
   description: 'Полный билд по всем задачам'
   tasks:
    - 'concurrent'
+plugins:
+  desciption: 'Установить плагины'
+  tasks:
+    - 'shell:init'
+    - 'shell:remove'
+    - 'shell:install'

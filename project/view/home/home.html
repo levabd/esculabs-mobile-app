@@ -2,14 +2,14 @@
 <ons-page ng-controller="homeController as vm">
 
     <ons-toolbar fixed-style>
-        <div class="left">
+        <div class="left" style="width: 15%;">
             <ons-toolbar-button ng-click="menu.toggleMenu()"><i class="fa-bars" style="font-size: 24px"></i></ons-toolbar-button>
         </div>
-        <!--<div class="center">Home</div>-->
-        <div class="right" style="padding-right: 6pt; padding-top: 12px; width: 30%">
-            <!--<ons-toolbar-button></ons-toolbar-button>-->
-            <i class="fa fa-search" style="position: absolute; top: 12px; right: 10px; float: left; z-index: 20;"></i>
+        <div class="center" style="width: 0;"></div>
+        <div class="right" style="padding-right: 10px; padding-top: 12px; max-width: 100%; width: 85%!important;">
+            <i class="fa fa-search" style="position: absolute; top: 12px; right: 10px; float: left;"></i>
             <input ng-model="vm.searchText" type="text" class="fkingInput">
+            <div class="border-bottom"></div>
         </div>
     </ons-toolbar>
 
@@ -36,43 +36,21 @@
             <p>
                 <label>Hospital check: </label><i class="fa-check" style="color: #006600" ng-show="patient.checked"></i><i class="fa-times" style="color: firebrick" ng-hide="patient.checked"></i>
             </p>
-            <div class="desctiption" ng-show="patient.detail">
+            <!--<div class="desctiption" ng-show="patient.detail">
                 <p style="text-align: justify;">Description: {{patient.description}}</p>
-            </div>
+            </div>-->
             <div>
-                <div class="more">
+                <!--<div class="more">
                     <ons-button ng-click="patient.detail = true;" ng-hide="patient.detail">More</ons-button>
                     <ons-button ng-click="patient.detail = false;" ng-show="patient.detail"><i class="fa fa-arrow-up"></i></ons-button>
-                </div><div class="acc">
-                <ons-button ng-click="patient.user_check = true">Accept</ons-button>
-            </div>
-            </div>
-        </div>
-
-        <!--<div class="patient-container" ng-repeat="patient in vm.patients | onlyBooleanValueFilter:true" ng-hide="patient.user_check">
-            <p>
-                <label>First name: {{patient.first_name}}</label>
-            </p>
-            <p>
-                <label>Last name: {{patient.last_name}}</label>
-            </p>
-            <p>
-                <label>Hospital: {{patient.hospital.title}}</label>
-            </p>
-            <p>
-                <i class="fa-check" style="color: #006600" ng-show="patient.checked"></i><i class="fa-times" style="color: firebrick" ng-hide="patient.checked"></i>
-            </p>
-            <div class="desctiption" ng-hide="patient.detail">
-                <p style="text-align: justify;">Description: {{patient.description}}</p>
-            </div>
-            <div>
+                </div>-->
                 <div class="more">
-                    <ons-button ng-click="patient.detail = false;">More</ons-button>
+                    <ons-button ng-click="navigate.pushPage('view/home/patient/detail.html')">More</ons-button>
                 </div><div class="acc">
-                <ons-button ng-click="patient.user_check = true">Accept</ons-button>
+                <ons-button ng-click="patient.user_check = true;vm.accept(patient.id);">Accept</ons-button>
                 </div>
             </div>
-        </div>-->
+        </div>
 
     </content-panel>
 

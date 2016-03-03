@@ -66,23 +66,6 @@
                     }
                 }
             }
-
-            /*if(vm.item.hospital != "") {
-                for (var i = 0; i < vm.item.hospitals_to_check.length; i++) {
-                    if(vm.item.hospital.title == vm.item.hospitals_to_check[i].title) {
-                        vm.item.hospitals_to_check[i].check = true;
-                    }
-                    else {
-                        vm.item.hospitals_to_check[i].check = false;
-                    }
-                }
-            }
-            console.info('4: SAVE FUNCTION EXECUTE');
-            for (var i = 0; i < $rootScope.usersData.length; i++) {
-                if ($rootScope.usersData[i].username == $rootScope.globals.currentUser.username) {
-                    $rootScope.usersData[i] = vm.item;
-                }
-            }*/
             alert('Profile saved');
 
         }
@@ -102,7 +85,7 @@
                 }
             },
             select: function (type) {
-                //loadModal.show();
+                loadModal.show();
                 if (type == 'camera') {
                     var options = {
                         quality: 50,
@@ -123,7 +106,7 @@
                         console.info(imageData);
                         navigate.pushPage('view/user/profile/imgCrop/imgCrop.html');
                     }, function(err) {
-                        //loadModal.hide();
+                        loadModal.hide();
                     });
                 }
 
@@ -143,10 +126,10 @@
                                 $rootScope.item.preAvatar = imageData[0];
                                 navigate.pushPage('view/user/profile/imgCrop/imgCrop.html');
                             }
-                            //loadModal.hide();
+                            loadModal.hide();
                         }, function (error) {
                             console.log(error);
-                            //loadModal.hide();
+                            loadModal.hide();
                         });
                 }
                 avatarTypeDialog.hide();

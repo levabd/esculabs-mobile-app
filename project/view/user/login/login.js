@@ -8,9 +8,6 @@
     function loginController($scope, $rootScope, localStorageService, authenticationService, $http) {
 
         var vm = this;
-        //$rootScope.user;
-
-        //localStorageService.set('authorized', false);
 
         var path = "";
         path = navigate.getCurrentPage().name;
@@ -18,22 +15,6 @@
             menu.setSwipeable(false);
             navigate.getDeviceBackButtonHandler().disable();
         }
-
-        /*vm.login = function() {
-            $rootScope.user = _.chain($rootScope.usersData)
-                .find(function(userData){ return userData.username == vm.username; })
-                .value();
-
-            if ($rootScope.user != undefined && vm.username == $rootScope.user.username && vm.password == $rootScope.user.password) {
-                navigate.popPage({animation: 'fade'});
-                localStorageService.set('authorized', true);
-                menu.setSwipeable(true);
-                navigate.getDeviceBackButtonHandler().enable();
-            }
-            else {
-                alert("Uncorrect username or password");
-            }
-        }*/
 
         console.info('LOGIN CONTROLLER');
 
