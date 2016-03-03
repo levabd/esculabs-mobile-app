@@ -116,7 +116,6 @@
 
             $http.get('db/users.json').success(function(data) {
                 $rootScope.usersData = data;
-                localStorageService.set('users', data);
                 console.info('First http.get');
                 $http.get('db/patients.json').success(function(data) {
                     $rootScope.patientsData = data;
