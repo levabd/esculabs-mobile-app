@@ -1,0 +1,7 @@
+{
+  "plugins":[
+    "cordova-plugin-camera",
+    "cordova-plugin-whitelist",
+    "https://github.com/wymsee/cordova-imagePicker.git"
+  ]
+}
